@@ -10,6 +10,8 @@ where n is the number of samples (quantum states), TRAJ_LENGTH is the number of 
 The code will work for 'iters' iterations and will attempt to find the state matrix creating the
 trajectories matrix using MLE. The code will print the likelihood of the rho matrix at each step.
 The code will then compare the created matrix with the true matrix and print the fidelity between them.
+
+Copyright (c) 2024 Zuzanna Jezierska
 """
 
 import numpy as np
