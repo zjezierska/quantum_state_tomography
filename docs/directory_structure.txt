@@ -1,0 +1,45 @@
+quantum_state_reconstruction/
+│
+├── README.md
+├── .gitignore
+├── docs/
+│   ├── proposal.md
+│   ├── progress_report.md
+│   ├── usage_guide.md
+│   ├── mle_documentation.md
+│   └── neural_network_documentation.md
+├── src/
+│   ├── __init__.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── neural_network.py  # Deep learning neural network code for quantum state reconstruction
+│   │   └── mle.py  # MLE related code
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   └── data_loader.py  # Data loading and preprocessing functions
+│   ├── main.py  # Entry point for running the project
+├── tests/
+│   ├── __init__.py
+│   ├── test_neural_network.py
+│   ├── test_mle.py
+│   └── test_data_loader.py  # Tests for data loading functions
+├── experiments/
+│   ├── __init__.py
+│   ├── experiment_1.py
+│   └── experiment_2.py
+├── data/
+│   ├── raw/
+│   │   ├── training_data.npy
+│   │   └── test_data.npy
+│   ├── processed/
+│       ├── processed_training_data.npy
+│       └── processed_test_data.npy
+│   ├── states.npy
+│   ├── trajectories.npy
+├── configs/
+│   └── config.yaml  # Configuration file for hyperparameters and settings
+└── scripts/
+    ├── generate_data.py  # Script to generate .npy files
+    ├── preprocess_data.py
+    ├── train_model.py
+    └── evaluate_model.py
