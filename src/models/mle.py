@@ -151,7 +151,7 @@ class MLEReconstructor:
 
     def compare_matrices(self, true_matrix, estimated_matrix):
         # Placeholder function to compare matrices
-        #TODO: Implement matrix comparison
+        #TODO: #3 Implement matrix comparison
         return np.random.random()
 
     def run(self):
