@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Move issue to Backlog
-        uses: actions-ecosystem/action-add-project-card@v1
+        uses: actions/add-to-project@v1.0.2
         with:
           project_name: "Quantum Tomography Development"
           column_name: "Backlog"
