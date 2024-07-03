@@ -24,6 +24,7 @@ import math
 from scipy.special import hermite
 import matplotlib.pyplot as plt
 from typing import Tuple, List
+from src.utils.quantum_utils import my_fidelity
 
 
 class MLEReconstructor:
@@ -150,9 +151,7 @@ class MLEReconstructor:
         return rho, likelihood_trend
 
     def compare_matrices(self, true_matrix, estimated_matrix):
-        # Placeholder function to compare matrices
-        #TODO: #3 Implement matrix comparison
-        return np.random.random()
+        return my_fidelity(true_matrix, estimated_matrix)
 
     def run(self):
             """
