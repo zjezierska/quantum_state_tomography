@@ -80,3 +80,23 @@ def generate_state_targets_and_trajectories(H, generated_states):
         trajectories.append(np.array(trajectory))
     
     return np.array(targets), np.array(trajectories)
+
+def save_data(states, trajectories, output_dir):
+    """
+    Save the generated states and trajectories to .npy files.
+
+    Parameters:
+    states (np.ndarray): Array of quantum states.
+    trajectories (np.ndarray): Array of trajectories.
+    output_dir (str): Directory to save the .npy files.
+    """
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    np.save(os.path.join(output_dir, 'states.npy'), states)
+    np.save(os.path.join(output_dir, 'trajectories.npy'), trajectories)
+
+def main(dims, num_samples, traj_length, nof_samples_distr, output_dir, H):
+    states = generate_states(dims, num_samples)
+    targets, trajectories = generate_state_targets_and_trajectories(H, states)
+    save_data(states, trajectories, output_dir)    
