@@ -1,7 +1,10 @@
 import numpy as np
 import argparse
 import qutip as qt
+import sys
 import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from src.config import DIMS, EVO_DIMS, NUM_SAMPLES, BATCH_SIZE_GEN, TRAJ_LENGTH, NOF_SAMPLES_DISTR, OUTPUT_DIR, X_MAX, ALPHA
 from src.utils.quantum_utils import calculate_psi_products_simple
 
@@ -138,13 +141,15 @@ def generate_and_save_data(dims, evo_dims, num_samples, batch_size, traj_length,
         h = a.dag() * a
     elif hamiltonian == "H_QUARTIC":
         print(f"Using the Quartic Hamiltonian with alpha = {alpha}...")
-        h = p**2 / 4 + (x / alpha)**4 # Quartic potential Hamiltonian
+        h = (p*p) / 4 + ((x / alpha) * (x / alpha) * (x / alpha) * (x / alpha))  # Quartic potential Hamiltonian
     else:
         raise ValueError("Invalid Hamiltonian. Please choose either 'H_HARMONIC' or 'H_QUARTIC'.")
     
     if gamma > 0:
         print(f"Using decoherence with gamma = {gamma}...")
         c_ops = [np.sqrt(gamma) * x]
+    else:
+        c_ops = []
         
     
     t_list = np.linspace(0, 2 * np.pi, traj_length) # Time list for the trajectory

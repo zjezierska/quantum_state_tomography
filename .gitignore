@@ -13,6 +13,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+environment.yml
 
 # Data files
 data/raw/
