@@ -2,7 +2,7 @@ import numpy as np
 import argparse
 import qutip as qt
 import os
-from src.config import DIMS, EVO_DIMS, NUM_SAMPLES, BATCH_SIZE_GEN, TRAJ_LENGTH, NOF_SAMPLES_DISTR, OUTPUT_DIR, X_MAX, H_HARMONIC, H_QUARTIC, ALPHA
+from src.config import DIMS, EVO_DIMS, NUM_SAMPLES, BATCH_SIZE_GEN, TRAJ_LENGTH, NOF_SAMPLES_DISTR, OUTPUT_DIR, X_MAX, ALPHA
 from src.utils.quantum_utils import calculate_psi_products_simple
 
 def generate_states(dims, num_samples_to_generate):
