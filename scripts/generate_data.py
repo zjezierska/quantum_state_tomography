@@ -132,7 +132,7 @@ def generate_and_save_data(dims, evo_dims, num_samples, batch_size, traj_length,
     - H (qutip.Qobj): The Hamiltonian operator describing the system dynamics.
     """
     
-    a = qt.destroy(dims) # Annihilation operator
+    a = qt.destroy(evo_dims) # Annihilation operator
     x = a.dag() + a # Position operator
     p = 1j * (a.dag() - a) # Momentum operator
     
