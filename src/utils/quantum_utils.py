@@ -1,5 +1,7 @@
 import qutip as qt
 import numpy as np
+import math
+from scipy.special import hermite
 
 def give_back_matrix(vectr):
     """
@@ -56,3 +58,57 @@ def my_fidelity(vec1, vec2):
         return qt.fidelity(vec1, vec2_normalized)
     else:
         raise ValueError('X is not Hermitian!')
+
+def calculate_psi_products_simple(position_array, dim):    
+    """
+    Calculate the product of wave functions for a given position array and dimension.
+
+    Parameters:
+    position_array (array-like): List of position values.
+    dim (int): Dimension of the wave functions.
+
+    Returns:
+    array-like: Product matrix of wave functions.
+
+    """
+    exp_list = np.exp(-position_array**2 / 2.0)
+    norm_list = [np.pi**(-0.25) / np.sqrt(2.0**m * math.factorial(m)) for m in range(dim)]
+    herm_list = [np.polyval(hermite(m), position_array) for m in range(dim)]
+    
+    product_matrix = np.array([
+        exp_list * norm_list[m] * herm_list[m] * exp_list * norm_list[n] * herm_list[n]
+        for m in range(dim) for n in range(dim)
+    ]).reshape((dim, dim, -1))
+    return product_matrix
+
+def calculate_psi_products_theta(position_array: np.ndarray, theta_list: np.ndarray, dim: int) -> np.ndarray:
+    """
+    Calculate the product matrix of positional psi functions for given position_array, theta_list, and dimension.
+
+    Parameters:
+    position_array (array-like): 2D array of position values for which to calculate the psi functions.
+    theta_list (array-like): List of theta values for which to calculate the psi functions.
+    dim (int): Dimension of the product matrix.
+
+    Returns:
+    array-like: Product matrix of psi functions with shape (len(theta_list), len_x, dim, dim).
+    """
+    assert position_array.shape[0] == len(theta_list), "position_array should have the same number of rows as the length of theta_list."
+    
+    len_theta = len(theta_list)
+    len_x = position_array.shape[1]
+    
+    exp_list = np.exp(-position_array**2 / 2.0)
+    norm_list = [np.pi**(-0.25) / np.sqrt(2.0**m * math.factorial(m)) for m in range(dim)]
+    herm_list = [np.polyval(hermite(m), position_array) for m in range(dim)]
+    
+    product_matrix = np.zeros((len_theta, len_x, dim, dim), dtype=np.complex128)
+    
+    for m in range(dim):
+        psi_m = exp_list * norm_list[m] * herm_list[m]
+        for n in range(dim):
+            psi_n = exp_list * norm_list[n] * herm_list[n]
+            phase_factor = np.exp(1j * (m - n) * (theta_list[:, None] - np.pi / 2))
+            product_matrix[:, :, m, n] = psi_m * psi_n * phase_factor
+    
+    return product_matrix

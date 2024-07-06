@@ -1,4 +1,10 @@
-numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1707225416355/work/dist/numpy-1.26.4-cp310-cp310-macosx_11_0_arm64.whl#sha256=14c628943f67e9c10d22faa9c1cdcbf69c3192e88f2f597d03b77a252e589567
-packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1718189413536/work
-qutip @ file:///Users/runner/miniforge3/conda-bld/qutip_1715991673975/work
-scipy @ file:///Users/runner/miniforge3/conda-bld/scipy-split_1719280596793/work/dist/scipy-1.14.0-cp310-cp310-macosx_11_0_arm64.whl#sha256=4a51295ede41379d644725cf3d34511b46af30f887aac9e23b16af0887242ec1
+numpy==1.26.4
+packaging
+qutip
+scipy==1.14.0
+matplotlib
+pandas
+scikit-learn
+seaborn
+tensorflow
+
