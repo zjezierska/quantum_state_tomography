@@ -4,12 +4,12 @@ import qutip as qt
 # Configuration constants
 DIMS = 4 # Dimension of the quantum state
 EVO_DIMS = 40 # Evolution dimensions
-NUM_SAMPLES = 32 # Number of samples to generate
+NUM_SAMPLES = 512 # Number of samples to generate
 TRAJ_LENGTH = 64 # Number of time steps in the trajectory
 NOF_SAMPLES_DISTR = 100 # Number of position samples to sample from the distribution
 OUTPUT_DIR = 'data' # Output directory for saving the generated data
 X_MAX = 5 # Maximum position value (absolute value)
-BATCH_SIZE_GEN = 16 # Batch size for generating data 
+BATCH_SIZE_GEN = 32 # Batch size for generating data 
 
 # Quantum Definitions
 ALPHA = 0.1 # Quartic potential parameter
