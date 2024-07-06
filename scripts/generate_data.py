@@ -154,7 +154,7 @@ def generate_and_save_data(dims, evo_dims, num_samples, batch_size, traj_length,
     
     t_list = np.linspace(0, 2 * np.pi, traj_length) # Time list for the trajectory
     x_list = np.linspace(-X_MAX, X_MAX, nof_samples_distr) # Position list for psi products
-    psi_products = calculate_psi_products_simple(x_list, dims) # Calculate psi products for the given dimensions (simple version)
+    psi_products = calculate_psi_products_simple(x_list, evo_dims) # Calculate psi products for the given dimensions (simple version)
     
     if num_samples < batch_size:
         print("Number of samples is less than the batch size. Generating all samples in one batch...")
